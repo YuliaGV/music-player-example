@@ -81,7 +81,6 @@ const Controls = () => {
     prevSong,
     playing,
     togglePlaying,
-    handleEnd,
     songslist,
   } = useContext(playerContext)
 
@@ -165,7 +164,6 @@ const Controls = () => {
         <audio
           onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
           onCanPlay={(e) => setDur(e.target.duration)}
-          onEnded={handleEnd}
           ref={audio}
           type="audio/mpeg"
           preload="true"

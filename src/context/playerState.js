@@ -8,8 +8,6 @@ const PlayerState = (props) => {
   const initialState = {
     currentSong: 0,
     songslist: song_list,
-    repeat: false,
-    random: false,
     playing: false,
     audio: null,
   }
@@ -41,25 +39,7 @@ const PlayerState = (props) => {
     }
   }
 
-
-  // End of Song
-  const handleEnd = () => {
-    // Check for random and repeat options
-    if (state.random) {
-      return dispatch({
-        type: 'SET_CURRENT_SONG',
-        data: ~~(Math.random() * state.songs.length),
-      })
-    } else {
-      if (state.repeat) {
-        nextSong()
-      } else if (state.currentSong === state.songs.length - 1) {
-        return
-      } else {
-        nextSong()
-      }
-    }
-  }
+ 
 
   return (
     <playerContext.Provider
@@ -73,7 +53,6 @@ const PlayerState = (props) => {
         prevSong,
         SetCurrent,
         togglePlaying,
-        handleEnd,
         songsSet,
       }}
     >
